@@ -1,0 +1,11 @@
+node_modules/
+dist/
+coverage/
+additional-doc/
+package-lock.json
+src/assets
+src/i18n
+changelog/
+.angular/
+e2e
+tests/
