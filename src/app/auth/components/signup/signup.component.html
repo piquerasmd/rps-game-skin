@@ -1,0 +1,53 @@
+<div class="signup-view-container">
+  <div class="signup-main-content">
+    <div class="signup-title-container">
+      <h1>RPS GAME</h1>
+    </div>
+    <mat-card class="signup-card">
+      <mat-card-header>
+        <mat-card-title>Create account</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="formControl" class="signup-form-container">
+          <ng-template matStepLabel>Account information</ng-template>
+          <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" required />
+            @if (formControl.get('username')?.hasError('required')) {
+              <mat-error>Username is required</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>E-mail</mat-label>
+            <input matInput formControlName="email" placeholder="pat@example.com" required />
+            @if (formControl.get('email')?.hasError('email')) {
+              <mat-error>Invalid email</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" required />
+            @if (formControl.get('password')?.hasError('minlength')) {
+              <mat-error>Very short password</mat-error>
+            }
+          </mat-form-field>
+          <button
+            mat-flat-button
+            color="primary"
+            [disabled]="!formControl.valid || isCreatingUser"
+            (click)="save()"
+          >
+          Register
+          </button>
+        </form>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-footer class="signup-card-footer">
+        <p>
+            Do you already have an account?
+          <a class="signup-card-footer-link" [routerLink]="'/login'">Log in</a>
+        </p>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>

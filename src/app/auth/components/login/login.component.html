@@ -1,1 +1,43 @@
-<p>login works!</p>
+<div class="login-view-container">
+  <div class="login-main-content">
+    <div class="login-title-container">
+      <h1>RPS GAME</h1>
+    </div>
+    <mat-card class="login-card">
+      <mat-card-header>
+        <mat-card-title>Log in</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="formControl" class="login-form-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" required />
+            @if (formControl.get('username')?.hasError('required')) {
+            <mat-error>Username is required</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" required />
+            @if (formControl.get('password')?.hasError('required')) {
+            <mat-error>Password is required</mat-error>
+            }
+          </mat-form-field>
+          @if (isError) {
+          <div class="login-error-alert">Incorrect password. Please try again.</div>
+          }
+          <button mat-flat-button color="primary" [disabled]="!formControl.valid" (click)="login()">
+            Log in
+          </button>
+        </form>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-footer class="login-card-footer">
+        <p>
+          Don't have an account yet?
+          <a class="login-card-footer-link" [routerLink]="'/signup'">Create your account</a>
+        </p>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>

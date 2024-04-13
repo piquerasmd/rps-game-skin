@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import {
   FormBuilder,
   FormGroup,
@@ -13,10 +14,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AuthService } from '../../services/auth.service';
 import { Router, RouterModule } from '@angular/router';
-import { LoginForm } from './login-form.interface';
+import { SignupForm } from './signup-form.interface';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-signup',
   standalone: true,
   imports: [
     MatCardModule,
@@ -28,15 +29,15 @@ import { LoginForm } from './login-form.interface';
     ReactiveFormsModule,
     RouterModule,
   ],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  templateUrl: './signup.component.html',
+  styleUrl: './signup.component.scss',
 })
-export class LoginComponent {
+export class SignupComponent {
   /** Email form control */
-  formControl: FormGroup<LoginForm>;
+  formControl: FormGroup<SignupForm>;
 
-  /** Determines if there has been an error when logging in */
-  isError = false;
+  /** Determines whether or not a user is being created */
+  isCreatingUser = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -47,31 +48,28 @@ export class LoginComponent {
   }
 
   /**
-   * Requests the token for the user
+   * Updates user's information
    */
-  login() {
-    if (this.formControl.invalid) {
-      return;
-    }
-    this.authService
-      .login(this.formControl.getRawValue())
-      .subscribe({
-        next: () => {
-          this.router.navigate(['/explorer/epds']);
-        },
-        error: (error) => {
-          this.isError = true;
-        },
-      });
+  save() {
+    this.isCreatingUser = true;
+    this.authService.register(this.formControl.getRawValue()).subscribe({
+      next: () => {
+        this.router.navigate(['/explorer/epds']);
+      },
+      error: () => {
+        this.isCreatingUser = false;
+      },
+    });
   }
 
   /**
-   * Initialize FormGroup
+   * Initializes FormGroup
    */
   _initFormGroup() {
     this.formControl = this.formBuilder.nonNullable.group({
       username: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 }

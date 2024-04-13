@@ -3,10 +3,8 @@
 // Defining color palettes
 $primary-palette: mat.define-palette(mat.$indigo-palette);
 $accent-palette: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-$warn-palette: mat.define-palette(mat.$red-palette);
 
 // Common colors and styles
-$error-color: mat.get-color-from-palette($warn-palette, 500);
 $link-color: mat.get-color-from-palette($accent-palette, A200);
 $background-color: mat.get-color-from-palette($primary-palette, 50);
 $padding-small: 16px;
@@ -21,57 +19,54 @@ $font-size-small: 12px;
   }
 }
 
-.login-view-container {
+.signup-view-container {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   overflow: auto;
   background-color: $background-color;
 }
 
-.login-main-content {
+.signup-main-content {
   display: flex;
   flex-direction: column;
   padding-top: 20px;
-  flex-basis: 30%;
+  flex-basis: 50%;
   @include respond-to('small') {
     flex-basis: 100%;
   }
 }
 
-.login-title-container {
+.signup-title-container {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 30px;
 }
 
-.login-card {
+.signup-card {
   @include mat.elevation(4);
   mat-card-content {
     padding: $padding-small;
   }
 }
 
-.login-form-container {
+.signup-form-container {
   display: flex;
   flex-direction: column;
 }
 
-.login-error-alert {
-  color: $error-color;
-  font-size: $font-size-small;
-  padding-bottom: 5px;
-}
-
-.login-card-footer {
+.signup-card-footer {
   padding-top: 2px;
   padding-left: $padding-small;
 }
 
-.login-card-footer-link {
+.signup-card-footer-link {
   text-decoration: none;
   color: $link-color;
 }
