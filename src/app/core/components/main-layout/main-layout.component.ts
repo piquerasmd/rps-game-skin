@@ -112,7 +112,7 @@ export class MainLayoutComponent {
           {
             id: 'sidenav__stats-link',
             title: 'Stats',
-            label: 'STATS',
+            label: 'Stats',
             icon: 'insert_chart',
             link: '/stats',
             toggleIfMobile: true,

@@ -53,14 +53,17 @@ export class LoginComponent {
     if (this.formControl.invalid) {
       return;
     }
+    // Disable the form while the request is being made
+    this.formControl.disable();
     this.authService
       .login(this.formControl.getRawValue())
       .subscribe({
         next: () => {
-          this.router.navigate(['/explorer/epds']);
+          this.router.navigate(['/game']);
         },
         error: (error) => {
           this.isError = true;
+          this.formControl.enable();
         },
       });
   }
