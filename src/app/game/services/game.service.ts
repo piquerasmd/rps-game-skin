@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Choice, Result } from '../models/game.enums';
 import { BehaviorSubject } from 'rxjs';
+import { GameApiService } from '../../core/services/game-api.service';
+import { AuthService } from '../../auth/services/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +13,7 @@ export class GameService {
   userScore$ = this.userScoreSubject.asObservable();
   computerScore$ = this.computerScoreSubject.asObservable();
 
-  constructor() {}
+  constructor(private gameApiService: GameApiService, private auth: AuthService) {}
 
   computeResult(userChoice: Choice, computerChoice: Choice): Result {
     let result: Result;
@@ -28,10 +30,24 @@ export class GameService {
       result = Result.Lose;
       this.computerScoreSubject.next(this.computerScoreSubject.value + 1);
     }
+    if (this.auth.isAuthenticated()) {
+      this.saveGame(userChoice, computerChoice, result);
+    }
     return result;
   }
 
   getComputerChoice(): Choice {
     return Object.values(Choice)[Math.floor(Math.random() * Object.values(Choice).length)];
+  }
+
+  saveGame(userChoice: Choice, computerChoice: Choice, result: Result) {
+    this.gameApiService
+      .createGame({
+        username: this.auth.getUsername(),
+        userChoice,
+        computerChoice,
+        result,
+      })
+      .subscribe();
   }
 }

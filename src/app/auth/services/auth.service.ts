@@ -71,6 +71,17 @@ export class AuthService {
     return !!this.currentTokenValue;
   }
 
+  getUsername(): string {
+    const token = this.currentTokenValue;
+    if (!token) {
+      return '';
+    }
+    const payload = token.split('.')[1];
+    const decodedPayload = atob(payload);
+    const { sub } = JSON.parse(decodedPayload);
+    return sub;
+  }
+
   private setToken(token: string): void {
     this.cookieService.set(TOKEN_KEY, token);
     this.currentTokenSubject.next(token);
