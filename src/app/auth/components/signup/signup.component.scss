@@ -1,12 +1,5 @@
 @use '@angular/material' as mat;
 
-// Defining color palettes
-$primary-palette: mat.define-palette(mat.$indigo-palette);
-$accent-palette: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
-// Common colors and styles
-$link-color: mat.get-color-from-palette($accent-palette, A200);
-$background-color: mat.get-color-from-palette($primary-palette, 50);
 $padding-small: 16px;
 $font-size-small: 12px;
 
@@ -19,7 +12,7 @@ $font-size-small: 12px;
   }
 }
 
-.signup-view-container {
+.signup {
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -29,10 +22,9 @@ $font-size-small: 12px;
   right: 0;
   bottom: 0;
   overflow: auto;
-  background-color: $background-color;
 }
 
-.signup-main-content {
+.signup__main-container {
   display: flex;
   flex-direction: column;
   padding-top: 20px;
@@ -42,7 +34,7 @@ $font-size-small: 12px;
   }
 }
 
-.signup-title-container {
+.signup__title-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,17 +48,16 @@ $font-size-small: 12px;
   }
 }
 
-.signup-form-container {
+.signup-card__form-container{
   display: flex;
   flex-direction: column;
 }
 
-.signup-card-footer {
+.signup-card__footer {
   padding-top: 2px;
   padding-left: $padding-small;
 }
 
-.signup-card-footer-link {
+.signup-card__footer-link {
   text-decoration: none;
-  color: $link-color;
 }

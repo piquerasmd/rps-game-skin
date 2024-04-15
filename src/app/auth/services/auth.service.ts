@@ -54,6 +54,10 @@ export class AuthService {
   logout() {
     this.transferState.remove(TOKEN_KEY);
     this.currentTokenSubject.next(null);
+    this.toLogin();
+  }
+
+  toLogin() {
     this.router.navigate(['/login']);
   }
 

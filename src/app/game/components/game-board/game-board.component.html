@@ -1,1 +1,25 @@
-<p>game-board works!</p>
+<div class="game-board">
+  <div class="game-board__choices">
+    <span class="game-board__choices--user">
+      {{ userChoice }}
+    </span>
+    <span class="game-board__vs">VS</span>
+    @if (isSpinning) {
+    <div class="game-board__slot-machine">
+      @for (option of slotOptions; track $index) {
+      <span class="game-board__slot-machine__slot">
+        {{ option }}
+      </span>
+      }
+    </div>
+    } @else {
+    <span class="game-board__choices--computer">{{ computerChoice }}</span>
+    }
+  </div>
+  <app-player-options (choiceSelected)="playGame($event)"></app-player-options>
+  <app-game-result
+    [result]="result"
+    [computerScore]="gameService.computerScore$ | async"
+    [userScore]="gameService.userScore$ | async"
+  ></app-game-result>
+</div>

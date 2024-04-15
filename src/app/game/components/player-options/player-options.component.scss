@@ -1,0 +1,28 @@
+$button-radius: 50%;
+$button-size: 60px;
+$box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+.player-options {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+
+  &__button {
+    border: none;
+    border-radius: $button-radius; // Makes the buttons circular
+    width: $button-size; // Uniform size for buttons
+    height: $button-size;
+    font-size: 30px; // Increase the size of the emoji
+    cursor: pointer;
+    box-shadow: $box-shadow; // Subtle shading for depth
+
+    &:hover {
+      transform: scale(1.1); // "Pop" effect on mouse hover
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+}

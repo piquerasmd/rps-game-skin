@@ -1,1 +1,22 @@
-<p>game-result works!</p>
+@if (result) {
+<mat-card>
+  <mat-card-content class="game-result">
+    <h1
+      class="game-result__title"
+      [ngClass]="{ victory: result === Result.Win, defeat: result === Result.Lose }"
+    >
+      {{ result }}
+    </h1>
+    <div class="game-result__scores">
+      <p>
+        Player Scoring:
+        <span class="score">{{ userScore }}</span>
+      </p>
+      <p>
+        Computer Scoring:
+        <span class="score">{{ computerScore }}</span>
+      </p>
+    </div>
+  </mat-card-content>
+</mat-card>
+}

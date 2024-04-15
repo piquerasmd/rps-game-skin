@@ -1,0 +1,25 @@
+@use '@angular/material' as mat;
+
+// Theming variables
+$shadow-color: rgba(0, 0, 0, 0.1); 
+$font-size-standard: 16px; 
+
+// Base styling for game result
+.game-result {
+  text-align: center;
+  color: #333; // Default text color for all child elements
+
+  // Title specific styling
+  &__title {
+    margin-bottom: 15px;
+  }
+
+  // Scores styling
+  &__scores {
+    font-size: $font-size-standard;
+
+    .score {
+      font-weight: bold; // Makes the score text bold
+    }
+  }
+}

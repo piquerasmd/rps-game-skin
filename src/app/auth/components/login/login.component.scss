@@ -1,14 +1,5 @@
 @use '@angular/material' as mat;
 
-// Defining color palettes
-$primary-palette: mat.define-palette(mat.$indigo-palette);
-$accent-palette: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-$warn-palette: mat.define-palette(mat.$red-palette);
-
-// Common colors and styles
-$error-color: mat.get-color-from-palette($warn-palette, 500);
-$link-color: mat.get-color-from-palette($accent-palette, A200);
-$background-color: mat.get-color-from-palette($primary-palette, 50);
 $padding-small: 16px;
 $font-size-small: 12px;
 
@@ -21,17 +12,16 @@ $font-size-small: 12px;
   }
 }
 
-.login-view-container {
+.login {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   overflow: auto;
-  background-color: $background-color;
 }
 
-.login-main-content {
+.login__main-container{
   display: flex;
   flex-direction: column;
   padding-top: 20px;
@@ -41,7 +31,7 @@ $font-size-small: 12px;
   }
 }
 
-.login-title-container {
+.login__title-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,23 +45,21 @@ $font-size-small: 12px;
   }
 }
 
-.login-form-container {
+.login-card__form-container {
   display: flex;
   flex-direction: column;
 }
 
-.login-error-alert {
-  color: $error-color;
+.login-card__error-alert {
   font-size: $font-size-small;
   padding-bottom: 5px;
 }
 
-.login-card-footer {
+.login-card__footer {
   padding-top: 2px;
   padding-left: $padding-small;
 }
 
-.login-card-footer-link {
+.login-card__footer-link {
   text-decoration: none;
-  color: $link-color;
 }

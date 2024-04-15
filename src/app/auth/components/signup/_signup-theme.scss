@@ -1,0 +1,20 @@
+@use '@angular/material' as mat;
+
+@mixin color($theme) {
+  $link-color: mat.get-theme-color($theme, accent, A200);
+  $background-color: mat.get-theme-color($theme, primary, 50);
+  
+  .signup {
+    background-color: $background-color;
+  }
+
+  .signup-card__footer-link {
+    color: $link-color;
+  }
+}
+
+@mixin theme($theme) {
+  @if mat.theme-has($theme, color) {
+    @include color($theme);
+  }
+}

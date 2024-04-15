@@ -1,6 +1,6 @@
-<div class="signup-view-container">
-  <div class="signup-main-content">
-    <div class="signup-title-container">
+<div class="signup">
+  <div class="signup__main-container">
+    <div class="signup__title-container">
       <h1>RPS GAME</h1>
     </div>
     <mat-card class="signup-card">
@@ -8,7 +8,7 @@
         <mat-card-title>Create account</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <form [formGroup]="formControl" class="signup-form-container">
+        <form [formGroup]="formControl" class="signup-card__form-container">
           <ng-template matStepLabel>Account information</ng-template>
           <mat-form-field appearance="outline">
             <mat-label>Username</mat-label>
@@ -42,10 +42,10 @@
         </form>
       </mat-card-content>
       <mat-divider></mat-divider>
-      <mat-card-footer class="signup-card-footer">
+      <mat-card-footer class="signup-card__footer">
         <p>
             Do you already have an account?
-          <a class="signup-card-footer-link" [routerLink]="'/login'">Log in</a>
+          <a class="signup-card__footer-link" [routerLink]="'/login'">Log in</a>
         </p>
       </mat-card-footer>
     </mat-card>

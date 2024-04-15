@@ -1,0 +1,25 @@
+@use '@angular/material' as mat;
+
+@mixin color($theme) {
+  $error-color: mat.get-theme-color($theme, warn, 500);
+  $link-color: mat.get-theme-color($theme, accent, A200);
+  $background-color: mat.get-theme-color($theme, primary, 50);
+  
+  .login {
+    background-color: $background-color;
+  }
+
+  .login-card__error-alert {
+    color: $error-color;
+  }
+
+  .login-card__footer-link {
+    color: $link-color;
+  }
+}
+
+@mixin theme($theme) {
+  @if mat.theme-has($theme, color) {
+    @include color($theme);
+  }
+}

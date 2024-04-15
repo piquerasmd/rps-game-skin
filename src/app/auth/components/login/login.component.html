@@ -1,6 +1,6 @@
-<div class="login-view-container">
-  <div class="login-main-content">
-    <div class="login-title-container">
+<div class="login">
+  <div class="login__main-container">
+    <div class="login__title-container">
       <h1>RPS GAME</h1>
     </div>
     <mat-card class="login-card">
@@ -8,7 +8,7 @@
         <mat-card-title>Log in</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <form [formGroup]="formControl" class="login-form-container">
+        <form [formGroup]="formControl" class="login-card__form-container">
           <mat-form-field appearance="outline">
             <mat-label>Username</mat-label>
             <input matInput formControlName="username" required />
@@ -24,7 +24,7 @@
             }
           </mat-form-field>
           @if (isError) {
-          <div class="login-error-alert">Incorrect password. Please try again.</div>
+          <div class="login-card__error-alert">Incorrect password. Please try again.</div>
           }
           <button mat-flat-button color="primary" [disabled]="!formControl.valid" (click)="login()">
             Log in
@@ -32,10 +32,10 @@
         </form>
       </mat-card-content>
       <mat-divider></mat-divider>
-      <mat-card-footer class="login-card-footer">
+      <mat-card-footer class="login-card__footer">
         <p>
           Don't have an account yet?
-          <a class="login-card-footer-link" [routerLink]="'/signup'">Create your account</a>
+          <a class="login-card__footer-link" [routerLink]="'/signup'">Create your account</a>
         </p>
       </mat-card-footer>
     </mat-card>

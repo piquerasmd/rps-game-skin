@@ -1,0 +1,20 @@
+@use '@angular/material' as mat;
+
+@mixin color($theme) {
+  $hover-bg-color: mat.get-theme-color($theme, primary, 100);
+  $active-bg-color: mat.get-theme-color($theme, primary, 200);
+  
+  .player-options__button:hover {
+    background-color: $hover-bg-color; // Color change on mouse over
+  }
+
+  .player-options__button:active {
+    background-color: $active-bg-color; // Color change on click
+  }
+}
+
+@mixin theme($theme) {
+  @if mat.theme-has($theme, color) {
+    @include color($theme);
+  }
+}

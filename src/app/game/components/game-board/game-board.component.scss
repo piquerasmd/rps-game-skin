@@ -1,0 +1,84 @@
+$gap-standard: 10px;
+$font-size-large: 3rem;
+$font-size-medium: 2rem;
+$color-text-secondary: #666;
+$slot-animation-time: 0.6s;
+$padding-standard: 20px;
+$margin-standard: 20px;
+
+// Base styling for the game board
+.game-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $padding-standard;
+
+  // Choices within the game board
+  &__choices {
+    display: flex;
+    align-items: center;
+    justify-content: center; // Centers elements horizontally
+    gap: $gap-standard; // Space between elements
+    height: 50px;
+    font-size: $font-size-large; // Font size for emojis
+
+    span {
+      padding: 0 $gap-standard; // Padding around emojis
+    }
+  }
+
+  // 'VS' indicator styling
+  &__vs {
+    margin: 0 15px; // Horizontal spacing around 'VS'
+    font-size: $font-size-medium;
+    font-weight: bold;
+    color: $color-text-secondary;
+  }
+
+  // Slot machine styling within the game board
+  &__slot-machine {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px; // Space between elements
+    height: 50px;
+    overflow: hidden;
+
+    &__slot {
+      display: flex;
+      flex-direction: column;
+      animation: spin $slot-animation-time linear infinite;
+    }
+  }
+
+  // Styles for external player options component
+  app-player-options {
+    margin-top: $margin-standard;
+  }
+
+  // Styles for the game result display component
+  app-game-result {
+    margin-top: $margin-standard;
+    padding: 10px $padding-standard;
+    width: 100%;
+    max-width: 600px; // Controls the maximum width of the result component
+    text-align: center;
+  }
+}
+
+// Keyframes for the slot machine animation
+@keyframes spin {
+  0% {
+    transform: translateY(100px);
+  }
+  33% {
+    transform: translateY(0);
+  }
+  66% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(-100px);
+  }
+}

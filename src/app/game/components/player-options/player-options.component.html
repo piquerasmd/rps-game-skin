@@ -1,1 +1,15 @@
-<p>player-options works!</p>
+<div class="player-options">
+  <button class="player-options__button" (click)="selectChoice(Choice.Rock)" aria-label="Rock">
+    <span class="emoji">👊</span>
+  </button>
+  <button class="player-options__button" (click)="selectChoice(Choice.Paper)" aria-label="Paper">
+    <span class="emoji">✋</span>
+  </button>
+  <button
+    class="player-options__button"
+    (click)="selectChoice(Choice.Scissors)"
+    aria-label="Scissors"
+  >
+    <span class="emoji">✌️</span>
+  </button>
+</div>

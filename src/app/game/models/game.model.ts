@@ -1,11 +1,7 @@
-export enum Choice {
-  Rock = 'ROCK',
-  Paper = 'PAPER',
-  Scissors = 'SCISSORS',
-}
+import { Choice, Result } from "./game.enums";
 
 export interface GameResult {
   playerChoice: Choice;
   computerChoice: Choice;
-  result: 'WIN' | 'LOSE' | 'DRAW';
+  result: Result;
 }
