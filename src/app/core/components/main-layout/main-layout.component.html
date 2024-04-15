@@ -1,0 +1,34 @@
+<div class="main-layout" *ngrxLet="isMobile$ as isMobile">
+  <app-header
+    [showMenu]="true"
+    [panelButtons]="panelButtons"
+    [login]="login"
+    [isMobile]="isMobile"
+    (toggle)="onToggle()"
+  ></app-header>
+
+  <mat-sidenav-container class="main-layout__sidenav-container">
+    <mat-sidenav
+      #mainSidenav
+      [mode]="isMobile ? 'over' : 'side'"
+      [fixedInViewport]="isMobile"
+      [opened]="!isMobile && isAuthenticated"
+    >
+      @if (isMobile) {
+        <h1 class="main-layout__mobile-title">RPS Game</h1>
+        <mat-divider></mat-divider>
+      }
+      <app-sidenav [navigationGroups]="navigationGroups" [isMobile]="isMobile" (toggle)="onToggle()"></app-sidenav>
+    </mat-sidenav>
+
+    <mat-sidenav-content [ngClass]="{ 'main-layout__sidenav-content': !isMobile }">
+      <div class="main-layout__router-outlet-container">
+        <router-outlet />
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  @if (!isMobile) {
+  <app-footer></app-footer>
+  }
+</div>

@@ -1,0 +1,62 @@
+<mat-toolbar class="header" color="primary" role="heading">
+    <mat-toolbar-row>
+      <div class="header__container">
+        @if(isMobile) {
+        <div class="header__menu-container">
+          @if (showMenu) { @if (showRouterBackButton) {
+          <button class="header__router-back-button" mat-icon-button (click)="onNavigateBack()">
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+          } @else {
+          <button class="header__menu-button" mat-icon-button (click)="onToggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+          } }
+        </div>
+        } @else {
+        <div class="header__logo">
+          <h1>RPS Game</h1>
+        </div>
+        }
+  
+        @if (!isMobile) {
+        <div class="header__web-user-options">
+          @if (login && !login.hideButton) {
+          <button
+            class="header__login-button"
+            mat-raised-button
+            [matTooltip]="login.tooltip || ''"
+            (click)="selectButton(login)"
+            color="primary"
+          >
+            @if(login.icon) {
+            <mat-icon>{{ login.icon }}</mat-icon>
+            }
+            <span>{{ login.tooltip }}</span>
+          </button>
+          }
+  
+          @for (button of panelButtons; track button.id) { @if (!button.hideButton) {
+          <button
+            class="header__button"
+            mat-icon-button
+            [matTooltip]="button.tooltip || ''"
+            (click)="selectButton(button)"
+          >
+            @if (button.icon) {
+            <mat-icon>{{ button.icon }}</mat-icon>
+            } @if (button.src) {
+            <img
+              class="header__user-picture"
+              [src]="button.src"
+              [alt]="button.id"
+            />
+            }
+          </button>
+          } }
+        </div>
+        }
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  

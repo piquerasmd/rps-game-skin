@@ -1,0 +1,23 @@
+.footer {
+  span {
+    font-size: 14px;
+  }
+
+  a:visited {
+    color: inherit; // Ensures visited links do not change color
+  }
+
+  &__flex-spacer {
+    flex: 1 1 auto; // Makes the spacer take available space
+  }
+}
+
+:host {
+  .mat-toolbar {
+    min-height: 50px !important; // Forces the toolbar minimum height, consider avoiding !important if possible
+  }
+
+  .mat-toolbar-row {
+    height: 48px !important; // Forces the toolbar row height, consider avoiding !important if possible
+  }
+}

@@ -1,0 +1,38 @@
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  .main-layout {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    flex: 1;
+
+    &__sidenav-container {
+      flex: 1;
+    }
+
+    &__sidenav-content {
+      border-left: 1px solid rgba(0, 0, 0, 0.12);
+    }
+
+    &__router-outlet-container {
+      height: 100%;
+    }
+
+    &__mobile-title {
+      padding: 5px;
+      margin: 0px;
+    }
+  }
+
+  .mat-sidenav {
+    width: 200px;
+    border-right: none;
+  }
+}

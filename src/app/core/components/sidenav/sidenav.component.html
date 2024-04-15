@@ -1,0 +1,26 @@
+<mat-nav-list class="sidenav">
+  @for (groups of navigationGroups; track $index) {
+    @if (isMobile ? !groups.hideInMobile: !groups.hideInDesktop) { 
+        @if (groups.title) {
+        <div mat-subheader>{{ groups.title }}</div>
+     } 
+  @for (navigation of groups.list; track navigation.id) { 
+    @if (isMobile ? !navigation.hideInMobile: !navigation.hideInDesktop) {
+        <mat-list-item
+            [id]="navigation.id"
+            (click)="selectItem(navigation)"
+            [routerLink]="navigation.link"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            [title]="navigation.title"
+        >
+          <mat-icon matListItemIcon>{{ navigation.icon }}</mat-icon>
+          <span matListItemTitle>{{ navigation.label }}</span>
+            
+        </mat-list-item>
+    } 
+    }
+  <mat-divider></mat-divider>
+  }
+}
+</mat-nav-list>
