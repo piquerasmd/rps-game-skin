@@ -111,10 +111,10 @@ export class MainLayoutComponent {
         list: [
           {
             id: 'sidenav__stats-link',
-            title: 'Stats',
-            label: 'Stats',
+            title: 'Results',
+            label: 'Results',
             icon: 'insert_chart',
-            link: '/stats',
+            link: '/games',
             toggleIfMobile: true,
           },
         ],

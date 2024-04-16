@@ -1,0 +1,30 @@
+<div class="games-list">
+    <div class="games-list__container">
+      <mat-card class="games-list__card">
+        <mat-card-header>
+          <mat-card-title>Games</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          @if (games$ | async; as games) {
+          <mat-list class="games-list__list">
+            @for (game of games; track $index; let last = $last) {
+            <mat-list-item>
+              <mat-icon matListItemIcon>star</mat-icon>
+              <div matListItemTitle>{{ game.result }}</div>
+              <div matListItemLine>
+                {{ ChoiceEmoji[game.userChoice] }} vs {{ ChoiceEmoji[game.computerChoice] }}
+              </div>
+              <div matListItemLine>{{ game.playedAt | date }}</div>
+            </mat-list-item>
+            @if (!last) {
+            <mat-divider></mat-divider>
+            } }
+          </mat-list>
+          }@else {
+          <mat-spinner></mat-spinner>
+          }
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  
