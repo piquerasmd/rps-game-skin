@@ -54,7 +54,7 @@ export class SignupComponent {
     this.isCreatingUser = true;
     this.authService.register(this.formControl.getRawValue()).subscribe({
       next: () => {
-        this.router.navigate(['/explorer/epds']);
+        this.router.navigate(['/']);
       },
       error: () => {
         this.isCreatingUser = false;

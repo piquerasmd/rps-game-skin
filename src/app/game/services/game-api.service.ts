@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ApiConfigService } from './api-config.service';
+import { ApiConfigService } from '../../core/services/api-config.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GameDTO } from '../models/game-dto.model';
@@ -16,6 +16,6 @@ export class GameApiService {
   }
 
   getGames(username: string): Observable<GameDTO[]> {
-    return this.http.get<GameDTO[]>(`${this.apiConfigService.getApiUrl()}/api/games/${username}`);
+    return this.http.get<GameDTO[]>(`${this.apiConfigService.getApiUrl()}/api/games/username/${username}`);
   }
 }
