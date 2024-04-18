@@ -51,6 +51,9 @@ export class SignupComponent {
    * Updates user's information
    */
   save() {
+    if (this.formControl.invalid) {
+      return;
+    }
     this.isCreatingUser = true;
     this.authService.register(this.formControl.getRawValue()).subscribe({
       next: () => {

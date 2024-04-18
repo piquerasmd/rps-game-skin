@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Choice, Result } from '../models/game.enums';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { GameApiService } from './game-api.service';
 import { AuthService } from '../../auth/services/auth.service';
 import { GameDTO } from '../models/game-dto.model';
@@ -54,7 +54,7 @@ export class GameService {
 
   getGames(username: string): Observable<GameDTO[]> {
     if (!username) {
-      return new Observable<GameDTO[]>();
+      return of([]);
     }
     return this.gameApiService.getGames(username);
   }
